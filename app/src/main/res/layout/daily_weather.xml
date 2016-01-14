@@ -6,7 +6,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/day"/>
+        android:id="@+id/day"
+        style="@style/DailyWeather"/>
 
     <ImageView
         android:layout_width="wrap_content"
@@ -16,10 +17,12 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tempHigh"/>
+        android:id="@+id/tempHigh"
+        style="@style/DailyWeather"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tempLow"/>
+        android:id="@+id/tempLow"
+        style="@style/DailyWeather"/>
 </LinearLayout>

@@ -32,4 +32,6 @@ public class CurrentWeather {
     public String getName() {
         return city.getName();
     }
+
+    public WeatherList getWeatherList(int day){return list[day];}
 }

@@ -1,5 +1,7 @@
 package feuchtwanger.feuchtwangerweather;
 
+import android.media.Image;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -7,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -17,43 +20,21 @@ import retrofit2.Retrofit;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
+    private ArrayList<String> zipcodes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        recyclerView = (RecyclerView) findViewById(R.id.list);
-        //set up how the recycler view looks
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this.getContext());
-        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        recyclerView.setLayoutManager(layoutManager);
+        zipcodes = new ArrayList<String>();
+        zipcodes.add("11210");
+        zipcodes.add("90210");
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://github.com")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        PresidentsService service = retrofit.create(PresidentsService.class);
-        Call<List<Presidents>> call = service.listPresidents();
-        call.enqueue(new Callback<List<Presidents>>() {
-                         @Override
-                         public void onResponse(Response<List<Presidents>> response) {
-                             List<Presidents> list = response.body();
-
-                             OnPresidentSelectedListener listener = (OnPresidentSelectedListener) getActivity();
-                             PresidentAdaptor adaptor = new PresidentAdaptor(presidents, pics, listener);
-                             recyclerView.setAdapter(adaptor);
-                         }
-
-                         @Override
-                         public void onFailure(Throwable t) {
-                             t.printStackTrace();
-                         }
-                     }
-        );
+        ViewPager pager = (ViewPager) findViewById(R.id.viewPager);
+        WeatherPagerAdapter pagerAdapter = new WeatherPagerAdapter(zipcodes);
+        pager.setAdapter(pagerAdapter);
     }
-
-}
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -1,7 +1,7 @@
 package feuchtwanger.feuchtwangerweather;
 
 public class WeatherList {
-    private double dt;
+    private long dt;
     private Temp temp;
     private double pressure;
     private int humidity;
@@ -29,5 +29,6 @@ public class WeatherList {
     public double getMax(){
         return temp.getMax();
     }
+    public long getDate(){return dt;}
 }
 

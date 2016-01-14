@@ -11,6 +11,8 @@ import butterknife.ButterKnife;
  * Created by Ariella on 1/12/2016.
  */
 public class WeatherDetailViewHolder extends RecyclerView.ViewHolder{
+    @Bind(R.id.details)
+    TextView details;
     @Bind(R.id.wind)
     TextView wind;
     @Bind(R.id.pressure)
@@ -20,10 +22,11 @@ public class WeatherDetailViewHolder extends RecyclerView.ViewHolder{
 
     public WeatherDetailViewHolder(View itemView) {
         super(itemView);
-        ButterKnife.bind(itemView);
+        ButterKnife.bind(this, itemView);
     }
 
     public void bind(TodayWeather today){
+        details.setText("Details:");
         pressure.setText("Pressure:\t" + today.getPressure());
         humidity.setText("Humidity:\t" + today.getHumidity());
 

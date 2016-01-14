@@ -14,7 +14,7 @@ import butterknife.ButterKnife;
 /**
  * Created by Ariella on 1/12/2016.
  */
-public class TodayWeatherPicViewHolder extends RecyclerView.ViewHolder{
+public class TodayWeatherPicViewHolder extends RecyclerView.ViewHolder {
     @Bind(R.id.image)
     ImageView image;
     @Bind(R.id.name)
@@ -22,10 +22,10 @@ public class TodayWeatherPicViewHolder extends RecyclerView.ViewHolder{
 
     public TodayWeatherPicViewHolder(View itemView) {
         super(itemView);
-        ButterKnife.bind(itemView);
+        ButterKnife.bind(this, itemView);
     }
 
-    public void bind(TodayWeather today, Context context){
+    public void bind(TodayWeather today, Context context) {
         name.setText(today.getMain());
         Picasso.with(context).load("http://openweathermap.org/img/w/" + today.getIcon() + ".png").into(image);
     }

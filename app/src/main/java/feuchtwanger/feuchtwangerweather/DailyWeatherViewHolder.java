@@ -9,6 +9,10 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
@@ -25,12 +29,14 @@ public class DailyWeatherViewHolder extends RecyclerView.ViewHolder{
 
     public DailyWeatherViewHolder(View itemView) {
         super(itemView);
-        ButterKnife.bind(itemView);
+        ButterKnife.bind(this,itemView);
     }
 
     public void bind(WeatherList weather, Context context){
-        day.setText("Monday");
-        tempHigh.setText(weather.getMax() + " ");
+        Date date = new Date(weather.getDate());
+        SimpleDateFormat formatter = new SimpleDateFormat("EEEE");
+        String dayName = formatter.format(date);
+        tempHigh.setText(dayName);
         tempLow.setText(" " + weather.getMin());
         Picasso.with(context).load("http://openweathermap.org/img/w/" + weather.getIcon() + ".png").into(weatherPic);
     }
