@@ -15,6 +15,8 @@ import butterknife.ButterKnife;
  * Created by Ariella on 1/12/2016.
  */
 public class TodayWeatherPicViewHolder extends RecyclerView.ViewHolder {
+    @Bind(R.id.location)
+    TextView location;
     @Bind(R.id.image)
     ImageView image;
     @Bind(R.id.name)
@@ -26,6 +28,7 @@ public class TodayWeatherPicViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void bind(TodayWeather today, Context context) {
+        location.setText(today.getName());
         name.setText(today.getMain());
         Picasso.with(context).load("http://openweathermap.org/img/w/" + today.getIcon() + ".png").into(image);
     }

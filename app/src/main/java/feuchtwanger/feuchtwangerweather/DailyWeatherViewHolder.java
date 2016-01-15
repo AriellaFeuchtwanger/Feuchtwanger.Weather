@@ -1,8 +1,10 @@
 package feuchtwanger.feuchtwangerweather;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.media.Image;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -24,20 +26,22 @@ public class DailyWeatherViewHolder extends RecyclerView.ViewHolder{
     ImageView weatherPic;
     @Bind(R.id.tempHigh)
     TextView tempHigh;
-    @Bind(R.id.tempLow)
-    TextView tempLow;
 
     public DailyWeatherViewHolder(View itemView) {
         super(itemView);
+
+        itemView.setBackgroundColor(Color.parseColor("#AB82FF"));
         ButterKnife.bind(this,itemView);
+
     }
 
-    public void bind(WeatherList weather, Context context){
-        Date date = new Date(weather.getDate());
+    public void bind(WeatherList weather, Context context) {
+        Date date = new Date(weather.getDate() * 1000);
         SimpleDateFormat formatter = new SimpleDateFormat("EEEE");
         String dayName = formatter.format(date);
-        tempHigh.setText(dayName);
-        tempLow.setText(" " + weather.getMin());
+        this.day.setText(dayName);
         Picasso.with(context).load("http://openweathermap.org/img/w/" + weather.getIcon() + ".png").into(weatherPic);
+        tempHigh.setText(weather.getMax() + "  \t  " + weather.getMin());
+
     }
 }

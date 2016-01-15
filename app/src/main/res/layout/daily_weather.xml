@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -7,22 +7,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/day"
-        style="@style/DailyWeather"/>
+        style="@style/DailyWeather"
+        android:layout_alignParentLeft="true"
+        android:background="@color/pink"/>
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/weatherPic"/>
+        android:id="@+id/weatherPic"
+        android:background="@color/pink"
+        android:layout_centerInParent="true"
+        />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tempHigh"
-        style="@style/DailyWeather"/>
+        style="@style/DailyWeather"
+        android:layout_alignParentRight="true"
+        android:background="@color/pink"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tempLow"
-        style="@style/DailyWeather"/>
-</LinearLayout>
+
+</RelativeLayout>

@@ -7,6 +7,7 @@ public class TodayWeather {
     private Main main;
     private Weather[] weather;
     private Wind wind;
+    private String name;
 
     public double getTemp(){
         return main.getTemp();
@@ -35,4 +36,6 @@ public class TodayWeather {
     public double getWindSpeed(){return  wind.getSpeed();}
 
     public double getWindDegree(){return wind.getDeg();}
+
+    public String getName(){return name;}
 }
